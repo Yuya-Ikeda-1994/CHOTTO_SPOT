@@ -12,7 +12,7 @@ class UsersController < ApplicationController
     @user = User.new(user.permit(:first_name, :last_name, :email, :password, :password_confirmation, :bio, :avatar, :gender))
 
     if @user.save
-      redirect_to root_path, notice: 'ユーザー登録に成功しました'
+      redirect_to new_user_session_path, notice: 'ユーザー登録に成功しました。ログインしてください。'
     else
       render :new
     end
