@@ -1,0 +1,60 @@
+<section class="py-1 bg-blueGray-50">
+  <div class="w-full lg:w-8/12 px-4 mx-auto mt-6">
+    <div class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-blueGray-100 border-0 h-full">
+      <div class="flex flex-col items-center justify-center h-full">
+        <div class="rounded-t bg-white mb-0 px-6 py-6 w-full">
+          <div class="text-center">
+            <h6 class="text-blueGray-700 text-xl font-bold">
+              アカウント登録
+            </h6>
+          </div>
+        </div>
+        <div class="flex-auto px-4 lg:px-10 py-10 pt-0">
+        <%= form_with model: @user,url: users_path, local: true do |form| %>
+          <div class="flex flex-wrap">
+            <div class="w-full lg:w-6/12 px-4">
+              <div class="relative w-full mb-3">
+                <%= form.label :苗字, class: "block uppercase text-blueGray-600 text-xs font-bold mb-2" %>
+                <%= form.text_field :last_name, class: "border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" %>
+              </div>
+            </div>
+            <div class="w-full lg:w-6/12 px-4">
+              <div class="relative w-full mb-3">
+                <%= form.label :名, class: "block uppercase text-blueGray-600 text-xs font-bold mb-2" %>
+                <%= form.text_field :first_name, class: "border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" %>
+              </div>
+            </div>
+            <div class="w-full lg:w-6/12 px-4">
+              <div class="relative w-full mb-3">
+                <%= form.label :メールアドレス, class: "block uppercase text-blueGray-600 text-xs font-bold mb-2" %>
+                <%= form.email_field :email, class: "border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" %>
+              </div>
+            </div>
+            <div class="w-full lg:w-6/12 px-4">
+              <div class="relative w-full mb-3">
+                <%= form.label :パスワード, class: "block uppercase text-blueGray-600 text-xs font-bold mb-2" %>
+                <%= form.password_field :password, class: "border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" %>
+              </div>
+            </div>
+            <div class="w-full lg:w-6/12 px-4">
+              <div class="relative w-full mb-3">
+                <%= form.label :パスワード確認, class: "block uppercase text-blueGray-600 text-xs font-bold mb-2" %>
+                <%= form.password_field :password_confirmation, class: "border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" %>
+              </div>
+            </div>
+            <div class="w-full lg:w-6/12 px-4">
+              <div class="relative w-full mb-3">
+                <%= form.label :gender, "性別", class: "block uppercase text-blueGray-600 text-xs font-bold mb-2" %>
+                <%= form.select :gender, [['男性', 'male'], ['女性', 'female'], ['その他', 'other']], {}, {class: "border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"} %>
+              </div>
+            </div>
+            <div class="flex justify-center items-center w-full">
+              <%= form.submit "登録", class: "bg-purple-500 text-white active:bg-pink-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150 mt-5" %>
+            </div>
+          </div>
+        <% end %>
+        </div>
+      </div> 
+    </div>
+  </div>
+</section>
