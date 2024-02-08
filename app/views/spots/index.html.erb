@@ -1,0 +1,30 @@
+<div class="container pt-12 pb-16">
+  <div class="row">
+	<div class="col-lg-10 offset-lg-1">
+	  <!-- 検索フォーム --!>
+	  <form>
+	    <div class="flex items-center space-x-2 m-5">
+		  <input class="form-control flex-1 border border-gray-300 rounded-lg p-2" placeholder="検索ワード" type="search"/>
+		  <input type="submit" value="検索" class="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded"/>
+	    </div>
+	  </form>
+  </div>
+</div>
+
+<%= link_to 'マップ検索', '#', class: "inline-block text-white bg-purple-500 hover:bg-purple-700 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 ml-5" %>
+
+<%= link_to '条件絞込', '#', class: "inline-block text-white bg-purple-500 hover:bg-purple-700 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2" %>
+
+<!-- 掲示板一覧 --!>
+<div class="row">
+	<div class="col-12">
+		<div class="row">
+			<% if @spots.present? %>
+				<%= render @spots %>
+			<% else %>
+				<p><% t('.no_result') %></p>
+			<% end %>
+		</div>
+	</div>
+</div>
+</div>
