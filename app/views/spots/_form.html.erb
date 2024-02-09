@@ -1,0 +1,63 @@
+<div class="h-full pt-10 pb-10">
+  <div class="my-4 flex flex-col 2xl:flex-row space-y-4 2xl:space-y-0 2xl:space-x-4">
+    <div class="w-full flex flex-col 2xl:w-1/3">
+      <div class="flex-1 bg-white rounded-lg shadow-xl p-8 flex flex-col justify-center">
+        <h4 class="text-xl text-gray-900 font-bold mb-5">スポット情報</h4>
+          <%= form_with model: @spot, local: true do |f| %>
+            <ul class="mt-2 text-gray-700">
+              <li class="flex border-y py-2 pt-5 pb-5">
+                <%= f.label :スポット名 ,class: "font-bold w-24 text-sm" %>
+                <%= f.text_field :spot_name ,class: "text-gray-700" %>
+              </li>
+              <li class="flex border-b py-2 pt-5 pb-5">
+                <%= f.label :住所, class: "font-bold w-24 text-sm" %>
+                <%= f.text_field :address, class: "text-gray-700" %>
+              </li>
+              <li class="flex flex-col border-b py-2 pt-5 pb-5">
+                <%= f.fields_for :spot_images do |spot_image_form| %>
+                  <div class="form-group mt-2">
+                    <%= spot_image_form.label :image, "スポット画像", class: "text-gray-900 font-bold " %>
+                    <%= spot_image_form.file_field :image, multiple: true, name: "spot[spot_images_attributes][][image]", class: "form-control", accept: 'image/*', onchange: 'previewImage(this)' %>
+                  </div>
+                <% end %>
+                <div id="preview-container" class="flex flex-wrap -mx-1"></div>
+              </li>
+              <li class="flex border-b py-2 pt-5 pb-5">
+                <%= f.label :コメント, class: "text-gray-900 font-bold mr-2 text-sm" %>
+                <%= f.text_field :comment, class: "mt-2 text-gray-700 pt-8 pb-8 pl-12" %>
+              </li>
+            </ul>
+            <div class="flex justify-center mt-10">
+              <%= f.submit "投稿", class: "bg-purple-500 text-white font-bold py-2 px-4 rounded hover:bg-purple-700 transition duration-150 ease-in-out" %>
+            </div>
+          <%end%>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function previewImage(input) {
+    const previewContainer = document.getElementById('preview-container');
+    previewContainer.innerHTML = ''; // コンテナを空にする
+
+    if (input.files) {
+      const files = Array.from(input.files);
+
+      files.forEach(file => {
+        const reader = new FileReader();
+
+        reader.onload = function(e) {
+          const img = document.createElement('img');
+          img.src = e.target.result;
+          img.style.width = '50px'; // サイズを100x100に設定
+          img.style.height = '50px';
+          img.classList.add('object-cover', 'm-1'); // オブジェクトフィットとマージンを調整
+          previewContainer.appendChild(img);
+        };
+
+        reader.readAsDataURL(file);
+      });
+    }
+  }
+</script>
