@@ -56,7 +56,7 @@ class SpotsController < ApplicationController
   end
 
   def set_spot
-    @spot = current_user.spots.find_by!(id: params[:id])
+    @spot = current_user.spots.find_by(id: params[:id])
   end
 end
 
