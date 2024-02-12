@@ -38,7 +38,7 @@ class SpotsController < ApplicationController
     end
   
     def destroy
-      @spot.destroy!
+      @spot.destroy
       redirect_to spots_path, notice: "投稿を削除しました"
     end
 
