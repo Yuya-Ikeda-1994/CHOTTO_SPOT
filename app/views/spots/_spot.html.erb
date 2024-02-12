@@ -1,54 +1,56 @@
-<section class="py-1 bg-green-50">
-  <div class="w-full lg:w-8/12 px-4 mx-auto mt-6">
-    <div class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-blueGray-100 border-0 h-full">
-      <div class="flex flex-col items-center justify-center h-full">
-        <div id="spot-id-<%= spot.id %>">
-          <div class="card-body p-5">
-            <ul class="list-inline">
-              <!-- スポットタイトル -->
-              <li class="list-inline-item-spot_title">
-                <div class="flex items-center space-x-1">
-                  <h4 class="card-title">
-                    スポット名:
-                    <%= spot.spot_name %>
-                  </h4>
-              </li>
-              <li class="list-inline-item-spot_title">
-                <div class="flex items-center space-x-1">
-                  <h4 class="card-address">
-                    住所:
-                    <%= spot.address %>
-                  </h4>
-                </div>
-              </li>
+<%= link_to spot_path(spot), class: "block" do %>
+  <section class="py-1 bg-green-50">
+    <div class="w-full lg:w-8/12 px-4 mx-auto mt-6">
+      <div class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-blueGray-100 border-0 h-full">
+        <div class="flex flex-col items-center justify-center h-full">
+          <div id="spot-id-<%= spot.id %>">
+            <div class="card-body p-5">
+              <ul class="list-inline">
+                <!-- スポットタイトル -->
+                <li class="list-inline-item-spot_title">
+                  <div class="flex items-center space-x-1">
+                    <h4 class="card-title">
+                      スポット名:
+                      <%= spot.spot_name %>
+                    </h4>
+                </li>
+                <li class="list-inline-item-spot_title">
+                  <div class="flex items-center space-x-1">
+                    <h4 class="card-address">
+                      住所:
+                      <%= spot.address %>
+                    </h4>
+                  </div>
+                </li>
 
-              <!-- ユーザー情報 -->
-              <li class="list-inline-item-user">
-                <div class="flex flex-row items-center space-x-2">
-                  <% if spot.user.avater.present? %> 
-                    <%= image_tag spot.user.avater_url, class:"w-8 border-4 border-white rounded-full" %>
-                  <% else %>
-                    <%= image_tag("default.png", class:"w-8 border-4 border-white rounded-full") %>
-                  <% end %>
-                  <span><%= spot.user.first_name %> <%= spot.user.last_name %></span>
-                </div>
-              </li>
+                <!-- ユーザー情報 -->
+                <li class="list-inline-item-user">
+                  <div class="flex flex-row items-center space-x-2">
+                    <% if spot.user.avater.present? %> 
+                      <%= image_tag spot.user.avater_url, class:"w-8 border-4 border-white rounded-full" %>
+                    <% else %>
+                      <%= image_tag("default.png", class:"w-8 border-4 border-white rounded-full") %>
+                    <% end %>
+                    <span><%= spot.user.first_name %> <%= spot.user.last_name %></span>
+                  </div>
+                </li>
 
-              <!-- コメント -->
-              <li class="list-inline-item-comment">
-                コメント:
-                <%= spot.comment %>
-              </li>
-              
-              <!-- 投稿時間 -->
-              <li class="list-inline-item-time">
-                <%= l spot.created_at, format: :long %>
-              </li>
-              
-            </ul>
+                <!-- コメント -->
+                <li class="list-inline-item-comment">
+                  コメント:
+                  <%= spot.comment %>
+                </li>
+                
+                <!-- 投稿時間 -->
+                <li class="list-inline-item-time">
+                  <%= l spot.created_at, format: :long %>
+                </li>
+                
+              </ul>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
+<% end %>
