@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_02_08_062007) do
+ActiveRecord::Schema.define(version: 2024_02_09_044225) do
+
+  create_table "feedbacks", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "spot_id", null: false
+    t.string "feedback_comment"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["spot_id"], name: "index_feedbacks_on_spot_id"
+    t.index ["user_id"], name: "index_feedbacks_on_user_id"
+  end
 
   create_table "spot_images", force: :cascade do |t|
     t.integer "spot_id", null: false
@@ -46,6 +56,8 @@ ActiveRecord::Schema.define(version: 2024_02_08_062007) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "feedbacks", "spots"
+  add_foreign_key "feedbacks", "users"
   add_foreign_key "spot_images", "spots"
   add_foreign_key "spots", "users"
 end

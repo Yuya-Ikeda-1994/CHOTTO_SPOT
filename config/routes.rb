@@ -5,8 +5,9 @@ Rails.application.routes.draw do
   resources :users, only: [:new, :create]
   resources :user_sessions, only: [:new, :create, :destroy]
   resource :profile, only: %i[show edit update]
-  resources :spots, only: %i[index new create]
-
+  resources :spots do
+    resources :feedbacks, only: %i[create], shallow: true
+  end
   get '/sign_up', to: 'users#new'
   get '/sign_in', to: 'user_sessions#new'
   delete '/sign_out', to: 'user_sessions#destroy', as: :sign_out
