@@ -1,16 +1,18 @@
 document.querySelector("#error_messages")?.remove();
-var jsTableFeedbackComment = document.querySelector("#js-table-feedback_comment"); // varを使用してスクリプトの先頭で宣言
+if (!window.jsTableFeedbackComment) {
+  window.jsTableFeedbackComment = document.querySelector("#js-table-feedback_comment");
+}
 
 <% if @feedback.errors.present? %>
-  // エラーがある場合は、エラーメッセージを表示
-  var newFeedbackComment = document.querySelector("#new_feedback_comment");
-  var errorMessages = `<%= j(render('shared/error_messages', object: @feedback)) %>`;
-  newFeedbackComment.insertAdjacentHTML('afterbegin', errorMessages);
+  if (!window.newFeedbackComment) {
+    window.newFeedbackComment = document.querySelector("#new_feedback_comment");
+  }
+  const errorMessages = `<%= j(render('shared/error_messages', object: @feedback)) %>`;
+  window.newFeedbackComment.insertAdjacentHTML('afterbegin', errorMessages);
 <% else %>
-  // エラーがない場合は、新しいフィードバックコメントを追加
-  var feedbackComment = `<%= j(render('feedbacks/feedback_comment', feedback: @feedback, spot: @spot)) %>`;
-  jsTableFeedbackComment.insertAdjacentHTML('afterbegin', feedbackComment);
-
+  // 直接 insertAdjacentHTML にHTMLテンプレートを渡す
+  window.jsTableFeedbackComment.insertAdjacentHTML('afterbegin', `<%= j(render('feedbacks/feedback_comment', feedback: @feedback, spot: @spot)) %>`);
+  
   // コメント入力フォームの内容をクリア
   document.querySelector("#js-new-feedback-feedback_comment").value = '';
 <% end %>
