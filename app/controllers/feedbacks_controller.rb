@@ -1,11 +1,23 @@
 class FeedbacksController < ApplicationController
 
     def create
+      @spot = Spot.find(params[:spot_id]) # これは@feedbackを保存する前に適切なスポットを見つけるための例です。
       @feedback = current_user.feedbacks.build(feedback_params)
-      if @feedback.save
-        redirect_to spot_path(@feedback.spot), success: t('defaults.message.created', item: Feedback.model_name.human)
-      else
-        redirect_to spot_path(@feedback.spot), danger: t('defaults.message.not_created', item: Feedback.model_name.human)
+      @feedback.spot = @spot
+      respond_to do |format|
+        if @feedback.save
+          format.js 
+        else
+          format.js
+        end
+      end
+    end
+
+    def destroy
+      @feedback = current_user.feedbacks.find(params[:id])
+      respond_to do |format|
+        @feedback.destroy
+          format.js
       end
     end
     

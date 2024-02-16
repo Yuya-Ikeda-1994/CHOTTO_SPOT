@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :user_sessions, only: [:new, :create, :destroy]
   resource :profile, only: %i[show edit update]
   resources :spots do
-    resources :feedbacks, only: %i[create], shallow: true
+    resources :feedbacks, only: %i[create destroy edit update], shallow: true
   end
   get '/sign_up', to: 'users#new'
   get '/sign_in', to: 'user_sessions#new'
