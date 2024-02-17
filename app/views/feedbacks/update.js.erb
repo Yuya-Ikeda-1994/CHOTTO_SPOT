@@ -1,0 +1,11 @@
+<% if @feedback.errors.any? %>
+  // 更新に失敗した場合、エラーメッセージを表示
+  document.querySelector('#error_messages').innerHTML = `<%= j(render 'shared/error_messages', object: @feedback) %>`;
+<% else %>
+  // 更新が成功した場合、コメントの表示を更新
+  window.feedbackIdUpdate = '<%= @feedback.id %>'; // `const` の代わりに `window` を使用
+  document.querySelector(`#js-feedback-${window.feedbackIdUpdate}`).innerHTML = `<%= j @feedback.feedback_comment %>`;
+  
+  // テキストエリアを隠す
+  document.querySelector(`#js-textarea-feedback-box-${window.feedbackIdUpdate}`).classList.add('hidden');
+<% end %>

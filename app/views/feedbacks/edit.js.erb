@@ -1,0 +1,13 @@
+document.querySelectorAll('.js-edit-feedback_comment-button').forEach(button => {
+  button.addEventListener('click', function(e) {
+    e.preventDefault();
+    var textareaBox = document.querySelector("#js-textarea-feedback-box-<%= @feedback.id %>");
+    if (textareaBox) {
+      textareaBox.classList.remove('hidden');
+    }
+  });
+  var textareaBox = document.querySelector("#js-textarea-feedback-box-<%= @feedback.id %>");
+    if (textareaBox) {
+        textareaBox.classList.remove('hidden');
+    }
+});
