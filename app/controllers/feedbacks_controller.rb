@@ -3,7 +3,6 @@ class FeedbacksController < ApplicationController
     def create
       @spot = Spot.find(params[:spot_id]) 
       @feedback = current_user.feedbacks.build(feedback_params)
-      @feedback.spot = @spot
       respond_to do |format|
         if @feedback.save
           format.js 
