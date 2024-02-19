@@ -4,7 +4,7 @@ class SpotsController < ApplicationController
   before_action :set_spot, only: [:edit, :update, :destroy]
 
   def index
-    @spots = Spot.all.includes(:user).order(created_at: :desc)
+    @spots = Spot.all.includes(:user, :tags).order(created_at: :desc)
   end
 
   def new
@@ -14,6 +14,10 @@ class SpotsController < ApplicationController
 
   def create
     @spot = current_user.spots.new(spot_params)
+    unless Tag.where(id: params[:spot][:tag_ids]).count == params[:spot][:tag_ids].count
+      flash[:error] = "指定された一部のタグが見つかりません。"
+      render :new and return
+    end
     if @spot.save
       redirect_to spots_path, notice: "投稿しました"
     else
@@ -29,23 +33,23 @@ class SpotsController < ApplicationController
 
   def edit;end
   
-    def update
-      if @spot.update(spot_params)
-        redirect_to @spot, notice: "投稿を更新しました"
-      else
-        render :edit
-      end
+  def update
+    if @spot.update(spot_params)
+      redirect_to @spot, notice: "投稿を更新しました"
+    else
+      render :edit
     end
-  
-    def destroy
-      @spot.destroy
-      redirect_to spots_path, notice: "投稿を削除しました"
-    end
+  end
+
+  def destroy
+    @spot.destroy
+    redirect_to spots_path, notice: "投稿を削除しました"
+  end
 
   private 
 
   def spot_params
-    params.require(:spot).permit(:spot_name, :address, :latitude, :longitude, :comment, spot_images_attributes: [:id, :image, :_destroy])
+    params.require(:spot).permit(:spot_name, :address, :latitude, :longitude, :comment, spot_images_attributes: [:id, :image, :_destroy], tag_ids: [])
   end
 
   def require_login

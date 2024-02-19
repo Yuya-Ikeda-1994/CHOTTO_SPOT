@@ -1,8 +1,8 @@
 <%= link_to spot_path(spot), class: "block" do %>
-  <section class="py-1 bg-green-50">
+  <section class="py-1 ">
     <div class="w-full lg:w-8/12 px-4 mx-auto mt-6">
       <div class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-blueGray-100 border-0 h-full">
-        <div class="flex flex-col items-center justify-center h-full">
+        <div class="flex flex-col items-center justify-center h-full bg-green-50">
           <div id="spot-id-<%= spot.id %>">
             <div class="card-body p-5">
               <ul class="list-inline">
@@ -22,7 +22,20 @@
                     </h4>
                   </div>
                 </li>
-
+                <!-- タグ -->
+                <li class="list-inline-item-spot_title">
+                  <div class="flex flex-wrap items-center">
+                    <% if spot.tags.any? %>
+                      <% spot.tags.each do |tag| %>
+                        <div class="flex items-center mt-1">
+                          <span class="bg-purple-500 text-white text-sm font-semibold mr-2 px-4 py-1 rounded-full dark:bg-purple-600 dark:text-white">
+                            <%= tag.content.humanize %>
+                          </span>
+                        </div>
+                      <% end %>
+                    <% end %>
+                  </div>
+                </li>
                 <!-- ユーザー情報 -->
                 <li class="list-inline-item-user">
                   <div class="flex flex-row items-center space-x-2">

@@ -13,6 +13,15 @@
             </div>
             <div class='w-full md:w-2/3 p-4'>
               <h3 class="text-xl font-semibold inline"><%= @spot.address %></h3>
+              <div class="flex flex-wrap items-center">
+                <% if @spot.tags.exists? %>
+                  <% @spot.tags.each do |tag| %>
+                    <span class="bg-purple-500 text-white text-sm font-semibold mr-2 px-4 py-1 rounded-full dark:bg-purple-600 dark:text-white mt-1">
+                      <%= tag.content %>
+                    </span>
+                  <% end %>
+                <% end %>
+              </div>
               <% if current_user&.own?(@spot) %>
                 <%= render 'crud_menus', spot: @spot %>
               <% end %>
