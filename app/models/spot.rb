@@ -8,4 +8,12 @@ class Spot < ApplicationRecord
 
   validates :spot_name, presence: true
   validates :address, presence: true
+
+  def self.ransackable_attributes(auth_object = nil)
+    ["address", "comment", "created_at", "id", "latitude", "longitude", "spot_name", "updated_at", "user_id"]
+  end
+
+  def self.ransackable_associations(auth_object = nil)
+    ["feedbacks", "spot_images", "spots_tags", "tags", "user"]
+  end
 end

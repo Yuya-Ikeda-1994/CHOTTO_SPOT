@@ -4,7 +4,9 @@ class SpotsController < ApplicationController
   before_action :set_spot, only: [:edit, :update, :destroy]
 
   def index
-    @spots = Spot.all.includes(:user, :tags).order(created_at: :desc)
+    @q = Spot.ransack(params[:q])
+    @spots = @q.result.includes(:user, :tags).order(created_at: :desc)
+
   end
 
   def new
