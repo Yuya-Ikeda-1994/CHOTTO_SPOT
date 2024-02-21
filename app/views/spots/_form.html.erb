@@ -14,6 +14,15 @@
                 <%= f.text_field :address, class: "text-gray-700" %>
               </li>
               <li class="flex flex-col border-b py-2 pt-5 pb-5">
+                <%= f.label :詳細情報, class: "font-bold text-sm mb-2" %>
+                <% Tag.all.each do |tag| %> 
+                  <div class="flex items-center mt-1">
+                    <%= f.check_box :tag_ids, { multiple: true, id: "tag_#{tag.id}" }, tag.id, nil %> 
+                    <%= f.label "tag_#{tag.id}", tag.content.humanize, class: "ml-2 text-sm" %> 
+                  </div>
+                <% end %>
+              </li>
+              <li class="flex flex-col border-b py-2 pt-5 pb-5">
                 <%= f.fields_for :spot_images do |spot_image_form| %>
                   <div class="form-group mt-2">
                     <%= spot_image_form.label :image, "スポット画像", class: "text-gray-900 font-bold " %>

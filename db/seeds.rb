@@ -23,3 +23,14 @@
       comment: "コメント#{index}"
     )
   end
+
+  Tag.create!([
+  { content: '屋外' },
+  { content: '屋内' },
+  { content: '飲食可' },
+  { content: '屋根' },
+  { content: 'テーブル' },
+  { content: '冷暖房' },
+  { content: '自動販売機' },
+  { content: 'トイレ' }
+])

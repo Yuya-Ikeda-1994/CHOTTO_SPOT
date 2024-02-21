@@ -4,7 +4,8 @@ class SpotsController < ApplicationController
   before_action :set_spot, only: [:edit, :update, :destroy]
 
   def index
-    @spots = Spot.all.includes(:user).order(created_at: :desc)
+    @q = Spot.ransack(params[:q])
+    @spots = @q.result.includes(:user, :tags).order(created_at: :desc)
   end
 
   def new
@@ -14,12 +15,20 @@ class SpotsController < ApplicationController
 
   def create
     @spot = current_user.spots.new(spot_params)
+  
+    # タグのIDが提供され、かつそれらが有効であることを確認
+    if params[:spot][:tag_ids].present? && !Tag.where(id: params[:spot][:tag_ids]).count == params[:spot][:tag_ids].count
+      flash[:error] = "指定された一部のタグが見つかりません。"
+      render :new and return
+    end
+  
     if @spot.save
       redirect_to spots_path, notice: "投稿しました"
     else
       render :new
     end
   end
+  
 
   def show
     @spot = Spot.find(params[:id])
@@ -29,23 +38,26 @@ class SpotsController < ApplicationController
 
   def edit;end
   
-    def update
-      if @spot.update(spot_params)
-        redirect_to @spot, notice: "投稿を更新しました"
-      else
-        render :edit
-      end
+  def update
+    if @spot.update(spot_params)
+      redirect_to @spot, notice: "投稿を更新しました"
+    else
+      render :edit
     end
-  
-    def destroy
-      @spot.destroy
-      redirect_to spots_path, notice: "投稿を削除しました"
-    end
+  end
+
+  def destroy
+    @spot.destroy
+    redirect_to spots_path, notice: "投稿を削除しました"
+  end
 
   private 
 
   def spot_params
-    params.require(:spot).permit(:spot_name, :address, :latitude, :longitude, :comment, spot_images_attributes: [:id, :image, :_destroy])
+    # `tag_ids`が存在しない場合は、デフォルトで空の配列を設定
+    params.require(:spot).permit(:spot_name, :address, :latitude, :longitude, :comment, spot_images_attributes: [:id, :image, :_destroy]).tap do |whitelisted|
+      whitelisted[:tag_ids] = params[:spot][:tag_ids] || []
+    end
   end
 
   def require_login
