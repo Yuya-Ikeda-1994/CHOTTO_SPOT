@@ -1,0 +1,2 @@
+var likesButtonContainer = document.getElementById('likes_buttons<%= @spot.id %>');
+likesButtonContainer.innerHTML = "<%= j(render partial: 'likes/like', locals: {spot: @spot, like: @like}).html_safe %>";

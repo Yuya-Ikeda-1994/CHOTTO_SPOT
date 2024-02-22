@@ -38,6 +38,9 @@
               </ul>
               <h3 class="text-xl font-semibold mt-4">コメント</h3>
               <p class="mt-4"><%= simple_format(@spot.comment) %></p> 
+              <div id="likes_buttons<%= @spot.id %>">
+                <%= render partial: 'likes/like', locals: { spot: @spot, like: @like} %>
+              </div>
             </div>
           </div>
         </div>
@@ -58,4 +61,3 @@
   </div>
 </div>
 
-  
