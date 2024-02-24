@@ -5,7 +5,7 @@ class SpotsController < ApplicationController
 
   def index
     @q = Spot.ransack(params[:q])
-    @spots = @q.result.includes(:user, :tags).order(created_at: :desc)
+    @spots = @q.result.includes(:user, :tags, :feedbacks, :likes).order(created_at: :desc)
   end
 
   def new
@@ -34,6 +34,7 @@ class SpotsController < ApplicationController
     @spot = Spot.find(params[:id])
     @feedback = Feedback.new
     @feedbacks = @spot.feedbacks.includes(:user).order(created_at: :desc)
+    @like = @spot.like_user(current_user.id) if current_user
   end
 
   def edit;end

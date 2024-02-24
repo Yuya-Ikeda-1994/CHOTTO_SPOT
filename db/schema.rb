@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_02_18_045215) do
+ActiveRecord::Schema.define(version: 2024_02_21_013359) do
 
   create_table "feedbacks", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -20,6 +20,16 @@ ActiveRecord::Schema.define(version: 2024_02_18_045215) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["spot_id"], name: "index_feedbacks_on_spot_id"
     t.index ["user_id"], name: "index_feedbacks_on_user_id"
+  end
+
+  create_table "likes", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "spot_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["spot_id"], name: "index_likes_on_spot_id"
+    t.index ["user_id", "spot_id"], name: "index_likes_on_user_id_and_spot_id", unique: true
+    t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
   create_table "spot_images", force: :cascade do |t|
@@ -73,6 +83,8 @@ ActiveRecord::Schema.define(version: 2024_02_18_045215) do
 
   add_foreign_key "feedbacks", "spots"
   add_foreign_key "feedbacks", "users"
+  add_foreign_key "likes", "spots"
+  add_foreign_key "likes", "users"
   add_foreign_key "spot_images", "spots"
   add_foreign_key "spots", "users"
   add_foreign_key "spots_tags", "spots"
