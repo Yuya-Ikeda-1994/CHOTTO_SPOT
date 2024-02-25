@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_02_21_013359) do
+ActiveRecord::Schema.define(version: 2024_02_24_011951) do
 
   create_table "feedbacks", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -78,6 +78,7 @@ ActiveRecord::Schema.define(version: 2024_02_21_013359) do
     t.integer "gender", default: 0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "guest", default: false, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
