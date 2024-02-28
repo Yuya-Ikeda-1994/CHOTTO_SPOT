@@ -2,11 +2,11 @@
   <div class="w-full lg:w-8/12 mx-auto">
     <%= form_with model: @feedback, url: [@spot, @feedback], id: 'new_feedback_comment',local: false do |f| %>
       <div class="m-4">
-        <%= f.label :コメント, class: "block text-gray-700 text-sm font-bold mb-2" %>
-        <%= f.text_area :feedback_comment, class: 'shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline', id: 'js-new-feedback-feedback_comment', rows: 4, placeholder: "コメント" %>
+        <%= f.label :feedback_comment, class: "block text-gray-700 text-sm font-bold mb-2" %>
+        <%= f.text_area :feedback_comment, class: 'shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline', id: 'js-new-feedback-feedback_comment', rows: 4, placeholder: t('activerecord.attributes.feedback.feedback_comment') %>
       </div>
       <div class="flex items-center justify-center h-32">
-        <%= f.submit "投稿", class: 'bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline' %>
+        <%= f.submit t('defaults.post'), class: 'bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline' %>
       </div>
     <% end %>
   </div>

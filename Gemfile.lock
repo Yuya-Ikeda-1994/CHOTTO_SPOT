@@ -312,6 +312,7 @@ DEPENDENCIES
   capybara (>= 3.26)
   carrierwave
   faker
+  i18n
   jbuilder (~> 2.7)
   listen (~> 3.3)
   mini_magick

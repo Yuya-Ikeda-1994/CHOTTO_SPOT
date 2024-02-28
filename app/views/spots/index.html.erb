@@ -4,18 +4,18 @@
     <div class="row">
       <div class="col-lg-10 offset-lg-1">
         <div class="flex items-center space-x-2 m-5">
-          <%= f.search_field :spot_name_or_address_or_latitude_or_longitude_or_comment_cont, class: "form-control flex-1 border border-gray-300 rounded-lg p-2", placeholder: "検索ワード" %>
-          <%= f.submit "検索", class: "bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded" %>
+          <%= f.search_field :spot_name_or_address_or_latitude_or_longitude_or_comment_cont, class: "form-control flex-1 border border-gray-300 rounded-lg p-2", placeholder: t('posts.index.search_word') %>
+          <%= f.submit t('defaults.search'), class: "bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded" %>
         </div>
       </div>
     </div>
   </div>
 <% end %>
 
-<%= link_to 'マップ検索', '#', class: "inline-block text-white bg-purple-500 hover:bg-purple-700 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 ml-5" %>
+<%= link_to t('posts.index.search_map'), '#', class: "inline-block text-white bg-purple-500 hover:bg-purple-700 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 ml-5" %>
 
 <!-- タグ検索 --!>
-<button id="toggleSearchFormButton" class="inline-block text-white bg-purple-500 hover:bg-purple-700 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 ml-5">条件絞込</button>
+<button id="toggleSearchFormButton" class="inline-block text-white bg-purple-500 hover:bg-purple-700 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 ml-5"><%= t('posts.index.narrow_down_conditions') %></button>
 
 <div id="searchForm" class="w-full lg:w-8/12 px-4 mx-auto mt-6 hidden">
   <div class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-blueGray-100 border-0 h-full">
@@ -30,7 +30,7 @@
           <% end %>
         </div>
         <div class="text-center">
-          <%= f.submit "タグで絞り込む", class: "bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" %>
+          <%= f.submit t('posts.index.narrow_tag'), class: "bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" %>
         </div>
       <% end %>
     </div>

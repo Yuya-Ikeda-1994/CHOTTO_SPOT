@@ -10,14 +10,14 @@
                 <li class="list-inline-item-spot_title">
                   <div class="flex items-center space-x-1">
                     <h4 class="card-title">
-                      スポット名:
+                      <%= t('activerecord.attributes.spot.spot_name') %>:
                       <%= spot.spot_name %>
                     </h4>
                 </li>
                 <li class="list-inline-item-spot_title">
                   <div class="flex items-center space-x-1">
                     <h4 class="card-address">
-                      住所:
+                      <%= t('activerecord.attributes.spot.address') %>:
                       <%= spot.address %>
                     </h4>
                   </div>
@@ -50,7 +50,7 @@
 
                 <!-- コメント -->
                 <li class="list-inline-item-comment">
-                  コメント:
+                  <%= t('activerecord.attributes.spot.comment') %>:
                   <%= spot.comment %>
                 </li>
                 

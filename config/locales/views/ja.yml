@@ -1,0 +1,39 @@
+ja:
+  defaults:
+    login: 'ログイン'
+    register: '登録'
+    logout: 'ログアウト'
+    home: 'ホーム'
+    search: '検索'
+    post: '投稿'
+    mypage: 'マイページ'
+    cancel: 'キャンセル'
+    update: '更新'
+  users:
+    title: 'ユーザー登録'
+    to_login_page: 'ログインページへ'
+  user_sessions:
+    new:
+      title: 'ログイン'
+      to_register_page: '登録ページへ'
+      password_forget: 'パスワードお忘れの方はこちら'
+  posts:
+    index:
+      search_word: '検索ワード'
+      search_map: 'マップ検索'
+      narrow_down_conditions: '条件絞込'
+      no_result: '該当するスポットがありません'
+      narrow_tag: 'タグで絞り込む'
+    new:
+      title: 'スポット投稿'
+      detail_info: '詳細情報'
+      post: '投稿'
+  profiles:
+    show:
+      title: 'プロフィール'
+      edit: 'プロフィール編集'
+      user_info: 'ユーザー情報'
+    edit:
+      user_info: 'ユーザー情報'
+      avatar: 'ユーザーアイコン'
+      save: '変更を保存'
