@@ -37,3 +37,10 @@ ja:
       user_info: 'ユーザー情報'
       avatar: 'ユーザーアイコン'
       save: '変更を保存'
+  views:
+    pagination:
+      first: '最初'
+      last: '最後'
+      next: '次へ'
+      previous: '前へ'
+      truncate: "..."

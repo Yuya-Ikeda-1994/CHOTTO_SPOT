@@ -5,7 +5,7 @@ class SpotsController < ApplicationController
 
   def index
     @q = Spot.ransack(params[:q])
-    @spots = @q.result.includes(:user, :tags, :feedbacks, :likes).order(created_at: :desc)
+    @spots = @q.result.includes(:user, :tags, :feedbacks, :likes).order(created_at: :desc).page(params[:page]).per(5)
   end
 
   def new
