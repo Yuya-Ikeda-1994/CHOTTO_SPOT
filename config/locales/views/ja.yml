@@ -10,13 +10,22 @@ ja:
     cancel: 'キャンセル'
     update: '更新'
   users:
-    title: 'ユーザー登録'
-    to_login_page: 'ログインページへ'
+    new:
+      title: 'ユーザー登録'
+      to_login_page: 'ログインページへ'
+    create:
+      success: 'ユーザー登録が完了しました'
+      fall: 'ユーザー登録に失敗しました'
   user_sessions:
     new:
       title: 'ログイン'
       to_register_page: '登録ページへ'
       password_forget: 'パスワードお忘れの方はこちら'
+    create:
+      success: 'ログインしました'
+      fall: 'ログインに失敗しました'
+    destroy:
+      success: 'ログアウトしました'
   posts:
     index:
       search_word: '検索ワード'
@@ -28,6 +37,14 @@ ja:
       title: 'スポット投稿'
       detail_info: '詳細情報'
       post: '投稿'
+    create:
+      success: 'スポットを投稿しました'
+      fall: 'スポットの投稿に失敗しました'
+    update:
+      success: 'スポットを更新しました'
+      fall: 'スポットの更新に失敗しました'
+    destroy:
+      success: 'スポットを削除しました'
   profiles:
     show:
       title: 'プロフィール'
@@ -37,6 +54,18 @@ ja:
       user_info: 'ユーザー情報'
       avatar: 'ユーザーアイコン'
       save: '変更を保存'
+    update:
+      success: 'プロフィールを更新しました'
+      fall: 'プロフィールの更新に失敗しました'
+  feedbacks:
+    create:
+      success: 'コメントを投稿しました'
+      fall: 'コメントの投稿に失敗しました'
+    update:
+      success: 'コメントを更新しました'
+      fall: 'コメントの更新に失敗しました'
+    destroy:
+      success: 'コメントを削除しました'
   views:
     pagination:
       first: '最初'
