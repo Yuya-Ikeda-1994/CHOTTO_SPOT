@@ -17,4 +17,14 @@ class UsersController < ApplicationController
       render :new
     end
   end
+
+  def guest_login
+    if current_user
+      redirect_to current_user, alert: "すでにログインしています"  # ログインしている場合はゲストユーザーを作成しない
+    else
+      user = User.guest_login
+      log_in user
+      redirect_to root_path, notice: "ゲストとしてログインしました"
+    end
+  end
 end

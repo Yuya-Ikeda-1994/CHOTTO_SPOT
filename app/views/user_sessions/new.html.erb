@@ -23,10 +23,13 @@
       <span class="absolute bg-white px-4">または</span>
       <div class="w-full bg-gray-200 mt-3" style="height: 1px"></div>
     </div>
-    <div class="flex space-x-2 justify-center items-center bg-gray-200 hover:bg-gray-600 text-black py-2 rounded-md transition duration-100 mt-5">
-      <img class="h-5 cursor-pointer" src="https://i.imgur.com/arC60SB.png" alt="">
-      <button>Googleでサインイン</button>
+    <div class="flex space-x-2 justify-center items-center bg-purple-200 hover:bg-purple-600 text-black py-2 rounded-md transition duration-100 mt-5">
+      <%= link_to "ゲストユーザーログイン", guest_login_path %>
     </div>
+    <%= link_to auth_at_provider_path(provider: :google), class: "flex space-x-2 justify-center items-center bg-gray-200 hover:bg-gray-600 text-black py-2 rounded-md transition duration-100 mt-5" do %>
+      <img class="h-5 cursor-pointer" src="https://i.imgur.com/arC60SB.png" alt="">
+      <span>Googleでサインイン</span>
+    <% end %>
     <%= link_to 'アカウント登録がまだの方はこちら', new_user_path, class: 'text-blue-500 hover:text-blue-800 block text-center mt-4' %>
   </div>
 </div>
