@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>CHOTTOSpot</title>
+    <title><%= page_title(yield(:title)) %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -16,6 +16,11 @@
 
   <body>
     <%= render 'shared/header' %>
+    <% flash.each do |key, message| %>
+      <div class="flash fixed top-[50px] left-0 w-full text-center z-[1000] bg-purple-500/50 text-white py-2 <%= key %>">
+        <%= message %>
+      </div>
+    <% end %>
     <%= yield %>
     <% if logged_in? %>
       <%= render 'shared/footer' %>

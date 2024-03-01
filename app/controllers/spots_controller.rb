@@ -5,7 +5,7 @@ class SpotsController < ApplicationController
 
   def index
     @q = Spot.ransack(params[:q])
-    @spots = @q.result.includes(:user, :tags, :feedbacks, :likes).order(created_at: :desc)
+    @spots = @q.result.includes(:user, :tags, :feedbacks, :likes).order(created_at: :desc).page(params[:page]).per(5)
   end
 
   def new
@@ -18,17 +18,17 @@ class SpotsController < ApplicationController
   
     # タグのIDが提供され、かつそれらが有効であることを確認
     if params[:spot][:tag_ids].present? && !Tag.where(id: params[:spot][:tag_ids]).count == params[:spot][:tag_ids].count
-      flash[:error] = "指定された一部のタグが見つかりません。"
+      flash[:error] = t('posts.create.fall')
       render :new and return
     end
   
     if @spot.save
-      redirect_to spots_path, notice: "投稿しました"
+      redirect_to spots_path, notice: t('posts.create.success')
     else
+      flash[:error] = t('posts.create.fall')
       render :new
     end
   end
-  
 
   def show
     @spot = Spot.find(params[:id])
@@ -41,7 +41,7 @@ class SpotsController < ApplicationController
   
   def update
     if @spot.update(spot_params)
-      redirect_to @spot, notice: "投稿を更新しました"
+      redirect_to @spot, notice: t('posts.update.success')
     else
       render :edit
     end
@@ -49,7 +49,7 @@ class SpotsController < ApplicationController
 
   def destroy
     @spot.destroy
-    redirect_to spots_path, notice: "投稿を削除しました"
+    redirect_to spots_path, notice: t('posts.destroy.success')
   end
 
   private 

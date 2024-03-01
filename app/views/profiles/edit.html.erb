@@ -1,3 +1,4 @@
+<% content_for :title, "ユーザープロフィール編集" %>
 <div class="h-full bg-gray-200 pb-16 pt-10">
   <div class="my-4 flex flex-col 2xl:flex-row space-y-4 2xl:space-y-0 2xl:space-x-4">
     <div class="w-full flex flex-col 2xl:w-1/3">
@@ -7,11 +8,11 @@
             <ul class="mt-2 text-gray-700">
               <li class="flex border-y py-2">
                 <%= f.label :苗字 ,class: "font-bold w-24 text-sm" %>
-                <%= f.text_field :first_name ,class: "text-gray-700" %>
+                <%= f.text_field :last_name, class: "text-gray-700" %>
               </li>
               <li class="flex border-b py-2">
                 <%= f.label :名, class: "font-bold w-24 text-sm" %>
-                <%= f.text_field :last_name, class: "text-gray-700" %>
+                <%= f.text_field :first_name ,class: "text-gray-700" %>
               </li>
               <li class="flex border-b py-2">
                 <%= f.label :メール, class: "font-bold w-24 text-xs" %>

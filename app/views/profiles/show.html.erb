@@ -1,3 +1,4 @@
+<% content_for :title, "ユーザープロフィール詳細" %>
 <body class="pb-16 pt-10">
   <div class="h-full bg-gray-200 p-8">
     <div class="bg-white rounded-lg shadow-xl pb-8">
@@ -27,11 +28,11 @@
           <ul class="mt-2 text-gray-700">
             <li class="flex border-y py-2">
               <span class="font-bold w-24 text-sm">苗字:</span>
-              <span class="text-gray-700" style="max-width: 200px; overflow-wrap: break-word;"><%= current_user.first_name %></span>
+              <span class="text-gray-700" style="max-width: 200px; overflow-wrap: break-word;"><%= current_user.last_name %></span>
             </li>
             <li class="flex border-b py-2">
               <span class="font-bold w-24 text-sm">名:</span>
-              <span class="text-gray-700" style="max-width: 200px; overflow-wrap: break-word;"><%= current_user.last_name %></span>
+              <span class="text-gray-700" style="max-width: 200px; overflow-wrap: break-word;"><%= current_user.first_name %></span>
             </li>
             <li class="flex border-b py-2">
               <span class="font-bold w-24 text-sm ">メール:</span>

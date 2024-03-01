@@ -1,3 +1,4 @@
+<% content_for :title, "スポット詳細" %>
 <div class="max-w-5xl mx-auto pt-20 ">
   <div class="mb-6">
     <div class="mx-auto px-4 lg:w-4/6">
@@ -36,7 +37,7 @@
               <ul class="list-none mt-4">
                 <li><%= l @spot.created_at, format: :long  %></li>
               </ul>
-              <h3 class="text-xl font-semibold mt-4">コメント</h3>
+              <h3 class="text-xl font-semibold mt-4"><%= t('activerecord.attributes.spot.comment') %></h3>
               <p class="mt-4"><%= simple_format(@spot.comment) %></p> 
               <div id="likes_buttons<%= @spot.id %>">
                 <%= render partial: 'likes/like', locals: { spot: @spot, like: @like} %>
