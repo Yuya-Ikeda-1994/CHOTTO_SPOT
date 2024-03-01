@@ -17,21 +17,20 @@ class UsersController < ApplicationController
     end
   end
 
+  def guest_login
+    if current_user
+      redirect_to current_user, alert: t('users.guest_login.fall')
+    else
+      user = User.guest_login
+      log_in user
+      redirect_to root_path, notice: t('users.guest_login.success') 
+    end
+  end
 
   private
 
   def user_params
     params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :bio, :avatar, :gender)
-  end
-
-  def guest_login
-    if current_user
-      redirect_to current_user, alert: "すでにログインしています"  # ログインしている場合はゲストユーザーを作成しない
-    else
-      user = User.guest_login
-      log_in user
-      redirect_to root_path, notice: "ゲストとしてログインしました"
-    end
   end
 end
 

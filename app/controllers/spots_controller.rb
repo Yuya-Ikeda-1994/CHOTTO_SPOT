@@ -63,7 +63,7 @@ class SpotsController < ApplicationController
 
   def require_login
     unless logged_in?
-      flash[:error] = "投稿するにはログインが必要です。"
+      flash[:error] = t('posts.new.fall')
       redirect_to new_user_session_path # ログインページへのパスを指定
     end
   end
