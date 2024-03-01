@@ -25,8 +25,11 @@ class OauthsController < ApplicationController
 
   def create_user_from(provider)
     @user = create_from(provider)
-    reset_session
-    auto_login(@user)
+    if @user.persisted?
+      reset_session
+      auto_login(@user)
+    else
+      redirect_to new_user_session_path, alert: t('oauths.create_user_from.failure')
+    end
   end
-  
 end
