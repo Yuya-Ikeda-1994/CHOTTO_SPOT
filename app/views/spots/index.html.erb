@@ -14,11 +14,20 @@
     </div>
   <% end %>
 
-  <%= link_to t('posts.index.search_map'), '#', class: "inline-block text-white bg-purple-500 hover:bg-purple-700 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 ml-5" %>
+  <!-- マップ検索ボタン --!>
+  <button type="button" class="inline-block text-white bg-purple-500 hover:bg-purple-700 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 ml-5" id="searchMapButton">
+    <%= t('posts.index.search_map') %>
+  </button>
 
-  <!-- タグ検索 --!>
+  <!-- リスト表示ボタン --!>
+  <button type="button" class="inline-block text-white bg-purple-500 hover:bg-purple-700 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 ml-5 hidden" id="listDisplayButton">
+    <%= t('posts.index.list_display') %> 
+  </button>
+
+  <!-- タグ検索ボタン --!>
   <button id="toggleSearchFormButton" class="inline-block text-white bg-purple-500 hover:bg-purple-700 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 ml-5"><%= t('posts.index.narrow_down_conditions') %></button>
-
+  
+  <!-- タグ検索 --!>
   <div id="searchForm" class="w-full lg:w-8/12 px-4 mx-auto mt-6 hidden">
     <div class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-blueGray-100 border-0 h-full">
       <div class="flex flex-col items-center justify-center h-full bg-green-50 p-2">
@@ -40,8 +49,16 @@
   </div>
 
 
+  <!-- Google Map -->
+  <div class="hidden" id="googleMap">
+    <div class="text-center m-5">
+      <h2 class="text-2xl font-bold mb-4">Google Map</h2>
+      <div id="map" class="w-full h-96 sm:h-[600px]"></div>
+    </div>
+  </div>
+
   <!-- 掲示板一覧 --!>
-  <div class="row">
+  <div class="row" id="boardList">
     <div class="col-12">
       <div class="row">
         <% if @spots.present? %>
@@ -55,13 +72,6 @@
   </div>
 </div>
 
-<script>
-  document.addEventListener("DOMContentLoaded", function() {
-    const toggleButton = document.getElementById('toggleSearchFormButton');
-    const searchForm = document.getElementById('searchForm');
-    
-    toggleButton.addEventListener('click', function() {
-      searchForm.classList.toggle('hidden');
-    });
-  });
-</script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDlQkifhqzFwnzn8YJjK9RV7lQiI6aH1d4&callback=initMap"></script>
+
+<%= javascript_pack_tag 'spots' %>

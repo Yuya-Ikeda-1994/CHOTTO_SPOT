@@ -37,6 +37,7 @@ gem 'ransack'
 gem 'config'
 gem 'i18n'
 gem 'kaminari'
+gem 'dotenv-rails'
 
 
 group :development, :test do

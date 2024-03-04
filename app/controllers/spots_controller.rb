@@ -16,7 +16,6 @@ class SpotsController < ApplicationController
   def create
     @spot = current_user.spots.new(spot_params)
   
-    # タグのIDが提供され、かつそれらが有効であることを確認
     if params[:spot][:tag_ids].present? && !Tag.where(id: params[:spot][:tag_ids]).count == params[:spot][:tag_ids].count
       flash[:error] = t('posts.create.fall')
       render :new and return

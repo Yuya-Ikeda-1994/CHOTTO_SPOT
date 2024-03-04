@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_02_25_054500) do
+ActiveRecord::Schema.define(version: 2024_03_03_235505) do
 
   create_table "authentications", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -59,6 +59,8 @@ ActiveRecord::Schema.define(version: 2024_02_25_054500) do
     t.string "comment"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "feedbacks_count", default: 0, null: false
+    t.integer "likes_count", default: 0, null: false
     t.index ["user_id"], name: "index_spots_on_user_id"
   end
 
