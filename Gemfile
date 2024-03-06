@@ -38,6 +38,7 @@ gem 'config'
 gem 'i18n'
 gem 'kaminari'
 gem 'dotenv-rails'
+gem 'geocoder'
 
 
 group :development, :test do

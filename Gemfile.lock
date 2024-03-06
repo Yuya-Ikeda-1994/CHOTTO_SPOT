@@ -138,6 +138,7 @@ GEM
     faraday-net_http (3.1.0)
       net-http
     ffi (1.16.3)
+    geocoder (1.8.2)
     globalid (1.2.1)
       activesupport (>= 6.1)
     hashie (5.0.0)
@@ -368,6 +369,7 @@ DEPENDENCIES
   config
   dotenv-rails
   faker
+  geocoder
   i18n
   jbuilder (~> 2.7)
   kaminari
