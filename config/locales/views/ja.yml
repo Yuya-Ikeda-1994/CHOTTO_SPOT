@@ -16,11 +16,16 @@ ja:
     create:
       success: 'ユーザー登録が完了しました'
       fall: 'ユーザー登録に失敗しました'
+    guest_login:
+      success: 'ゲストユーザーでログインしました'
+      fall: 'すでにログイン済みです'
   user_sessions:
     new:
       title: 'ログイン'
-      to_register_page: '登録ページへ'
+      to_register_page: 'アカウント登録がまだの方はこちら'
       password_forget: 'パスワードお忘れの方はこちら'
+      guest_login: 'ゲストユーザーでログイン'
+      google_login: 'Googleでログイン'
     create:
       success: 'ログインしました'
       fall: 'ログインに失敗しました'
@@ -30,6 +35,7 @@ ja:
     index:
       search_word: '検索ワード'
       search_map: 'マップ検索'
+      list_display: 'リスト表示'
       narrow_down_conditions: '条件絞込'
       no_result: '該当するスポットがありません'
       narrow_tag: 'タグで絞り込む'
@@ -37,6 +43,7 @@ ja:
       title: 'スポット投稿'
       detail_info: '詳細情報'
       post: '投稿'
+      fall: 'スポットの投稿にはログインが必要です'
     create:
       success: 'スポットを投稿しました'
       fall: 'スポットの投稿に失敗しました'

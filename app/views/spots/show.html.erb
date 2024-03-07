@@ -39,9 +39,11 @@
               </ul>
               <h3 class="text-xl font-semibold mt-4"><%= t('activerecord.attributes.spot.comment') %></h3>
               <p class="mt-4"><%= simple_format(@spot.comment) %></p> 
-              <div id="likes_buttons<%= @spot.id %>">
-                <%= render partial: 'likes/like', locals: { spot: @spot, like: @like} %>
-              </div>
+              <% unless current_user&.own?(@spot) %>
+                <div id="likes_buttons<%= @spot.id %>">
+                  <%= render partial: 'likes/like', locals: { spot: @spot, like: @like} %>
+                </div>
+              <% end %>
             </div>
           </div>
         </div>

@@ -7,6 +7,8 @@ class Spot < ApplicationRecord
   accepts_nested_attributes_for :spot_images, allow_destroy: true
   has_many :likes, dependent: :destroy
   has_many :liked_users, through: :likes, source: :user
+  geocoded_by :address
+  after_validation :geocode
 
   validates :spot_name, presence: true
   validates :address, presence: true

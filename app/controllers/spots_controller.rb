@@ -16,7 +16,6 @@ class SpotsController < ApplicationController
   def create
     @spot = current_user.spots.new(spot_params)
   
-    # タグのIDが提供され、かつそれらが有効であることを確認
     if params[:spot][:tag_ids].present? && !Tag.where(id: params[:spot][:tag_ids]).count == params[:spot][:tag_ids].count
       flash[:error] = t('posts.create.fall')
       render :new and return
@@ -63,7 +62,7 @@ class SpotsController < ApplicationController
 
   def require_login
     unless logged_in?
-      flash[:error] = "投稿するにはログインが必要です。"
+      flash[:error] = t('posts.new.fall')
       redirect_to new_user_session_path # ログインページへのパスを指定
     end
   end
