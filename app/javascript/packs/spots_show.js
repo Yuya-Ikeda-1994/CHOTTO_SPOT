@@ -13,16 +13,19 @@ function initMap() {
       zoom: 15,
     });
   
+    // 共通の色を変数に代入
+    const markerColor = '#800080';
+
     // スポットの位置にカスタムピンを立てる
     const userMarker = new google.maps.Marker({
       position: spotLocation,
       map: map,
       icon: {
         path: google.maps.SymbolPath.BACKWARD_CLOSED_ARROW,
-        fillColor: '#800080',
+        fillColor: markerColor, // 変数で色を指定
         fillOpacity: 0.8,
         scale: 8,
-        strokeColor: '#800080',
+        strokeColor: markerColor, // 変数で色を指定
         strokeWeight: 1.0,
       },
       animation: google.maps.Animation.BOUNCE // アニメーションをBOUNCEに設定

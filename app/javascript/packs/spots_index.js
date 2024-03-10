@@ -69,6 +69,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     // マップの中心を現在地に更新
                     map.setCenter(userLocation);
 
+                    // 共通の色を変数に代入
+                    const markerColor = '#800080';
+
                     // ユーザーの現在地にマーカーを立てる
                     if (userMarker) {
                         userMarker.setPosition(userLocation);
@@ -78,10 +81,10 @@ document.addEventListener('DOMContentLoaded', () => {
                             position: userLocation,
                             icon: {
                                 path: google.maps.SymbolPath.BACKWARD_CLOSED_ARROW,
-                                fillColor: '#800080',
+                                fillColor: markerColor,
                                 fillOpacity: 0.8,
                                 scale: 8,
-                                strokeColor: '#800080',
+                                strokeColor: markerColor,
                                 strokeWeight: 1.0
                             },
                             animation: google.maps.Animation.BOUNCE // ピンの上下アニメーションを追加
@@ -113,6 +116,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         const contentString = `<div class="p-2">
                                                     <div class="font-bold text-lg">${spot.spot_name}</div>
                                                     <p class="text-sm">${spot.address}</p>
+                                                    <a href="/spots/${spot.id}" target="_blank" style="color: blue; text-decoration: none;" onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'">詳細を見る</a>
                                                </div>`;
                     
                         // 吹き出しのインスタンスを作成
