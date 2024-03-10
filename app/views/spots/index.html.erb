@@ -51,7 +51,7 @@
 
   <!-- Google Map -->
   <div id="googleMap" class="text-center m-5 hidden">
-    <div id="map" class="w-full h-96 sm:h-[600px]" data-spots='<%= @spots.to_json(only: [:latitude, :longitude, :address, :spot_name]) %>'></div>
+    <div id="map" class="w-full h-96 sm:h-[600px]" data-spots='<%= @spots.to_json(only: [:id, :latitude, :longitude, :address, :spot_name]) %>'></div>
   </div>
 
 
@@ -70,7 +70,5 @@
   </div>
 </div>
 
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDlQkifhqzFwnzn8YJjK9RV7lQiI6aH1d4&callback=initMap"></script>
-
-<%= javascript_pack_tag 'spots' %>
+<%= javascript_pack_tag 'spots_index' %>
 
