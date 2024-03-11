@@ -1,4 +1,49 @@
-<div>
-  <h1 class="font-bold text-4xl">TopPage#index</h1>
-  <p>Find me in app/views/top_page/index.html.erb</p>
-</div>
+<% content_for :title, "トップページ" %>
+<body class="pb-16 pt-10">
+  <div class="home-page">
+    <div class="catch-copy-container w-full p-14 flex justify-between max-w-5xl mx-auto items-center">
+      <div class="catch-copy font-serif ">
+        少しの隙間時間などに座ってゆっくりできる場所が欲しいと思ったことはありませんか？
+      </div>
+    </div>
+    <section class="contents">
+      <div class="business-container bg-green-100 flex justify-center p-5">
+        <div class="business-left flex flex-col items-center justify-center w-1/4">
+          <div class="title font-serif bg-purple-200">ビジネスで</div>
+          <%= image_pack_tag 'media/images/business_man.jpg', alt: 'Business Man', style: 'height: 100px; width: 100px;' %>
+        </div>
+        <div class="business-right w-3/4 ml-2">
+          <p class="business-comment font-serif text-xs mt-8">
+            「待ち合わせより15分早く着いてしまったな」
+          </p>
+          <p class="business-comment-2 font-serif text-xs mt-2">
+            「座って時間を潰したいけど、15分のためにカフェに入ってコーヒー代を払うのもなぁ・・・」
+          </p>
+        </div>
+      </div>
+      <div class="takeout-container bg-green-100 flex justify-center p-5 mt-5">
+        <div class="takeout-left">
+          <p class="takeout-comment font-serif text-xs mt-2 w-3/5">
+            「ランチのテイクアウトを買ったけど、どこかで座って食べれるスペースはないかなぁ・・・」
+          </p>
+        </div>
+        <div class="takeout-right flex flex-col items-center justify-center w-2/5">
+          <div class="title font-serif bg-purple-200 text-xs">出先の食事で</div>
+          <%= image_pack_tag 'media/images/woman.jpg', alt: 'Woman', style: 'height: 100px; width: 100px;' %>
+        </div>
+      </div>
+    </section>
+    <section class="contents-2 max-w-5xl mx-auto items-center">
+      <div class="footer-menu-frame flex flex-col items-center">
+        <div class="comments-container font-serif w-full p-5 mt-5">
+          <p class="comments">
+            そんな皆様の悩みをCHOTTO SPOTが解決します！
+          </p>
+          <p class="comments-2">
+            一緒に探していきましょう！
+          </p>
+        </div>
+      </div>
+    </section>
+  </div>
+</body>

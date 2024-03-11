@@ -1,0 +1,85 @@
+<section class="py-1 ">
+  <div class="w-full lg:w-8/12 px-4 mx-auto mt-6">
+    <div class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-blueGray-100 border-0 h-full">
+      <%= link_to spot_path(spot), class: "block" do %>  
+        <div class="flex flex-col items-center justify-center h-full bg-green-50">
+          <div id="spot-id-<%= spot.id %>">
+            <div class="card-body p-5">
+              <ul class="list-inline">
+                <!-- スポットタイトル -->
+                <li class="list-inline-item-spot_title">
+                  <div class="flex items-center space-x-1">
+                    <h4 class="card-title">
+                      <%= t('activerecord.attributes.spot.spot_name') %>:
+                      <%= spot.spot_name %>
+                    </h4>
+                </li>
+                <li class="list-inline-item-spot_title">
+                  <div class="flex items-center space-x-1">
+                    <h4 class="card-address">
+                      <%= t('activerecord.attributes.spot.address') %>:
+                      <%= spot.address %>
+                    </h4>
+                  </div>
+                </li>
+                <!-- タグ -->
+                <li class="list-inline-item-spot_title">
+                  <div class="flex flex-wrap items-center">
+                    <% if spot.tags.any? %>
+                      <% spot.tags.each do |tag| %>
+                        <div class="flex items-center mt-1">
+                          <span class="bg-purple-500 text-white text-sm font-semibold mr-2 px-4 py-1 rounded-full dark:bg-purple-600 dark:text-white">
+                            <%= tag.content.humanize %>
+                          </span>
+                        </div>
+                      <% end %>
+                    <% end %>
+                  </div>
+                </li>
+                <!-- ユーザー情報 -->
+                <li class="list-inline-item-user">
+                  <div class="flex flex-row items-center space-x-2">
+                    <% if spot.user.avater.present? %> 
+                      <%= image_tag spot.user.avater_url, class:"w-8 border-4 border-white rounded-full" %>
+                    <% else %>
+                      <%= image_tag("default.png", class:"w-8 border-4 border-white rounded-full") %>
+                    <% end %>
+                    <span><%= spot.user.first_name %> <%= spot.user.last_name %></span>
+                  </div>
+                </li>
+
+                <!-- コメント -->
+                <li class="list-inline-item-comment">
+                  <%= t('activerecord.attributes.spot.comment') %>:
+                  <%= spot.comment %>
+                </li>
+                
+                <!-- 投稿時間 -->
+                <li class="list-inline-item-time">
+                  <%= l spot.created_at, format: :long %>
+                </li>
+
+                <!-- アイコン -->
+                <ul class="flex justify-end items-center gap-1">
+                  <li class="feedback_comment_count list-inline-item-time flex items-center gap-1">
+                    <svg class="h-5 w-5 text-gray-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">  
+                      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+                    </svg>
+                    <p class="m-0"><%= spot.feedbacks_count %></p>
+                  </li>
+                  <li class="likes_count list-inline-item-time flex items-center gap-1">
+                    <svg class="h-5 w-5 text-red-500" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                      <path stroke="none" d="M0 0h24v24H0z"/>
+                      <path d="M12 20l-7 -7a4 4 0 0 1 6.5 -6a.9 .9 0 0 0 1 0a4 4 0 0 1 6.5 6l-7 7"/>
+                    </svg>
+                    <p class="m-0"><%= spot.likes_count %></p>
+                  </li>
+                </ul>
+              </ul>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</section>

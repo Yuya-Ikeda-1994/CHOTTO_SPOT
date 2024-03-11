@@ -1,0 +1,24 @@
+<nav class="bg-green-300 w-full p-2 fixed top-0 z-50">
+  <div class="flex  justify-between max-w-5xl mx-auto items-center">
+    <div class="flex items-center mb-4 md:mb-0">
+      <%= link_to 'CHOTTO SPOT', root_path, class: 'text-lg md:text-xl font-bold hover:text-purple-300' %>
+    </div>
+    <div class="group text-center">
+      <% if logged_in? %>
+        <%= link_to sign_out_path, method: :delete, class: 'flex flex-col items-center justify-center hover:text-purple-300' do %>
+          <svg class="h-4 w-4 md:h-8 md:w-8 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+          </svg>
+          <span class="text-xs md:text-xs capitalize"><%= t('defaults.logout') %></span>
+        <% end %>
+      <% else %>
+        <%= link_to new_user_session_path, class: 'flex flex-col items-center justify-center hover:text-purple-300' do %>
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1" />
+          </svg>
+          <span class="text-xs md:text-xs capitalize"><%= t('defaults.login') %></span>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</nav>

@@ -1,0 +1,33 @@
+ja:
+  activerecord:
+    models:
+      user: 'ユーザー'
+      spot: 'スポット'
+      spot_image: 'スポット画像'
+      tag: 'タグ'
+      feedback: 'フィードバック'
+    attributes:
+      user:
+        email: 'メール'
+        password: 'パスワード'
+        password_confirmation: 'パスワード確認'
+        last_name: '姓'
+        first_name: '名'
+        bio: '自己紹介'
+        avater: 'ユーザーアイコン'
+        gender: '性別'
+        guest: 'ゲスト'
+      spot:
+        spot_name: 'スポット名'
+        address: '住所'
+        latitude: '緯度'
+        longitude: '経度'
+        comment: 'コメント'
+      spot_image:
+        image: 'スポット画像'
+      tag:
+        content: 'タグ'
+      feedback:
+        feedback_comment: 'コメント'
+      
+

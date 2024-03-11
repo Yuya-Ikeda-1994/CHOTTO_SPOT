@@ -28,6 +28,18 @@ gem 'jbuilder', '~> 2.7'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
 gem 'tailwindcss-rails'
+gem 'sorcery'
+gem 'action_args'
+gem 'carrierwave'
+gem 'mini_magick'
+gem 'faker'
+gem 'ransack'
+gem 'config'
+gem 'i18n'
+gem 'kaminari'
+gem 'dotenv-rails'
+gem 'geocoder'
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

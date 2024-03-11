@@ -1,0 +1,82 @@
+ja:
+  defaults:
+    login: 'ログイン'
+    register: '登録'
+    logout: 'ログアウト'
+    home: 'ホーム'
+    search: '検索'
+    post: '投稿'
+    mypage: 'マイページ'
+    cancel: 'キャンセル'
+    update: '更新'
+  users:
+    new:
+      title: 'ユーザー登録'
+      to_login_page: 'ログインページへ'
+    create:
+      success: 'ユーザー登録が完了しました'
+      fall: 'ユーザー登録に失敗しました'
+    guest_login:
+      success: 'ゲストユーザーでログインしました'
+      fall: 'すでにログイン済みです'
+  user_sessions:
+    new:
+      title: 'ログイン'
+      to_register_page: 'アカウント登録がまだの方はこちら'
+      password_forget: 'パスワードお忘れの方はこちら'
+      guest_login: 'ゲストユーザーでログイン'
+      google_login: 'Googleでログイン'
+    create:
+      success: 'ログインしました'
+      fall: 'ログインに失敗しました'
+    destroy:
+      success: 'ログアウトしました'
+  posts:
+    index:
+      search_word: '検索ワード'
+      search_map: 'マップ検索'
+      list_display: 'リスト表示'
+      narrow_down_conditions: '条件絞込'
+      no_result: '該当するスポットがありません'
+      narrow_tag: 'タグで絞り込む'
+    new:
+      title: 'スポット投稿'
+      detail_info: '詳細情報'
+      post: '投稿'
+      fall: 'スポットの投稿にはログインが必要です'
+    create:
+      success: 'スポットを投稿しました'
+      fall: 'スポットの投稿に失敗しました'
+    update:
+      success: 'スポットを更新しました'
+      fall: 'スポットの更新に失敗しました'
+    destroy:
+      success: 'スポットを削除しました'
+  profiles:
+    show:
+      title: 'プロフィール'
+      edit: 'プロフィール編集'
+      user_info: 'ユーザー情報'
+    edit:
+      user_info: 'ユーザー情報'
+      avatar: 'ユーザーアイコン'
+      save: '変更を保存'
+    update:
+      success: 'プロフィールを更新しました'
+      fall: 'プロフィールの更新に失敗しました'
+  feedbacks:
+    create:
+      success: 'コメントを投稿しました'
+      fall: 'コメントの投稿に失敗しました'
+    update:
+      success: 'コメントを更新しました'
+      fall: 'コメントの更新に失敗しました'
+    destroy:
+      success: 'コメントを削除しました'
+  views:
+    pagination:
+      first: '最初'
+      last: '最後'
+      next: '次へ'
+      previous: '前へ'
+      truncate: "..."
