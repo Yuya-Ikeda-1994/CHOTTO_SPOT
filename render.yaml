@@ -1,0 +1,21 @@
+databases:
+  - name: CHOTTO_SPOT_DB
+    databaseName: chotto_spot_db
+    user: CHOTTO_SPOT
+    region: singapore
+
+services:
+  - type: web
+    name: CHOTTO_SPOT
+    env: ruby
+    region: singapore
+    plan: free
+    buildCommand: "./bin/render-build.sh"
+    startCommand: "bundle exec puma -C config/puma.rb"
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: CHOTTO_SPOT_DB
+          property: connectionString
+      - key: RAILS_MASTER_KEY
+        sync: false
