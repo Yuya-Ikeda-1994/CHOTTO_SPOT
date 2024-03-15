@@ -10,10 +10,16 @@ class OauthsController < ApplicationController
       redirect_to root_path, notice: "#{provider.titleize}でログインしました"
       return
     end
+  
     Rails.logger.info "Before login_from: @user=#{@user.inspect}"
     @user = login_from(provider)
     Rails.logger.info "After login_from: @user=#{@user.inspect}"
-    create_user_from(provider) unless (@user = login_from(provider))
+  
+    unless @user
+      create_user_from(provider)
+      return # 処理をここで終了させる
+    end
+  
     redirect_to root_path, notice: "#{provider.titleize}でログインしました"
   end
 
