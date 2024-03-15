@@ -23,10 +23,13 @@ class OauthsController < ApplicationController
       reset_session
       auto_login(@user)
       redirect_to root_path, notice: "#{provider.titleize}でログインしました"
-    else
-      flash[:alert] = @user.errors.full_messages.join(', ')
-      redirect_to new_user_session_path
+      return # この行を追加して、メソッドから抜け出す
     end
+  
+    # ユーザーの作成に失敗した場合、こちらのブロックが実行されます。
+    # rescueブロックからこの位置に到達することはありません。
+    flash[:alert] = @user.errors.full_messages.join(', ')
+    redirect_to new_user_session_path
   rescue ActiveRecord::NotNullViolation
     flash[:alert] = t('errors.messages.null_violation')
     redirect_to new_user_session_path
