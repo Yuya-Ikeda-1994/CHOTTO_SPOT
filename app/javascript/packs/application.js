@@ -10,6 +10,7 @@ import "channels"
 import '../images/business_man.jpg';
 import '../images/woman.jpg';
 
+
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
