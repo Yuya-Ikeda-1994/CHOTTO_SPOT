@@ -17,19 +17,25 @@ class OauthsController < ApplicationController
     redirect_to root_path, notice: "#{provider.titleize}でログインしました"
   end
 
+  def create_user_from(provider)
+    @user = create_from(provider)
+    if @user.persisted?
+      reset_session
+      auto_login(@user)
+      redirect_to root_path, notice: "#{provider.titleize}でログインしました"
+    else
+      flash[:alert] = @user.errors.full_messages.join(', ')
+      redirect_to new_user_session_path
+    end
+  rescue ActiveRecord::NotNullViolation
+    flash[:alert] = t('errors.messages.null_violation')
+    redirect_to new_user_session_path
+  end
+
   private
 
   def auth_params
     params.permit(:code, :provider, :denied, :scope, :authuser, :prompt)
   end
 
-  def create_user_from(provider)
-    @user = create_from(provider)
-    if @user.persisted?
-      reset_session
-      auto_login(@user)
-    else
-      redirect_to new_user_session_path, alert: t('oauths.create_user_from.failure')
-    end
-  end
 end

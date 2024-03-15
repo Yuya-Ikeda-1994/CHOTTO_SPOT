@@ -83,3 +83,4 @@ ja:
   errors:
     messages:
       no_results_found: "検索結果が見つかりませんでした。"
+      null_violation: "必要な情報が不足しているため、ユーザー登録に失敗しました。"
