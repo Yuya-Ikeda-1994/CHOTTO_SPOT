@@ -7,7 +7,7 @@ class OauthsController < ApplicationController
   def callback
     provider = auth_params[:provider] || "google"
     if auth_params[:denied].present?
-      redirect_to root_path, notice: "#{provider.titleize}でログインしました"
+      redirect_to root_path, notice: "#{provider.titleize}でログインできませんでした"
       return
     end
   
@@ -17,7 +17,7 @@ class OauthsController < ApplicationController
   
     unless @user
       create_user_from(provider)
-      return # 処理をここで終了させる
+      return 
     end
   
     redirect_to root_path, notice: "#{provider.titleize}でログインしました"
@@ -29,11 +29,10 @@ class OauthsController < ApplicationController
       reset_session
       auto_login(@user)
       redirect_to root_path, notice: "#{provider.titleize}でログインしました"
-      return # この行を追加して、メソッドから抜け出す
+      return 
     end
   
-    # ユーザーの作成に失敗した場合、こちらのブロックが実行されます。
-    # rescueブロックからこの位置に到達することはありません。
+
     flash[:alert] = @user.errors.full_messages.join(', ')
     redirect_to new_user_session_path
   rescue ActiveRecord::NotNullViolation
