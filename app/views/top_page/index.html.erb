@@ -1,41 +1,41 @@
 <% content_for :title, "トップページ" %>
-<body class="pb-16 pt-10">
+<body class="pb-16 pt-10 mt-10 mb-10">
   <div class="home-page">
-    <div class="catch-copy-container w-full p-14 flex justify-between max-w-5xl mx-auto items-center">
-      <div class="catch-copy font-serif ">
+    <div class="catch-copy-container w-full p-4 md:p-8 lg:p-14 flex justify-between max-w-5xl mx-auto items-center mb-5">
+      <div class="catch-copy font-serif text-base md:text-lg lg:text-xl">
         少しの隙間時間などに座ってゆっくりできる場所が欲しいと思ったことはありませんか？
       </div>
     </div>
-    <section class="contents">
-      <div class="business-container bg-green-100 flex justify-center p-5">
-        <div class="business-left flex flex-col items-center justify-center w-1/4">
-          <div class="title font-serif bg-purple-200">ビジネスで</div>
-          <%= image_pack_tag 'media/images/business_man.jpg', alt: 'Business Man', style: 'height: 100px; width: 100px;' %>
-        </div>
-        <div class="business-right w-3/4 ml-2">
-          <p class="business-comment font-serif text-xs mt-8">
+    <section class="contents pt-10">
+      <div class="business-container bg-green-100 flex flex-col md:flex-row justify-center items-center p-5">
+        <div class="business-left flex flex-col items-center justify-center w-full md:w-1/2 lg:w-1/4 p-2">
+          <div class="title font-serif bg-purple-200 text-sm md:text-base lg:text-lg">ビジネスで</div>
+            <%= image_pack_tag 'media/images/business_man.jpg', alt: 'Business Man', class: 'h-24 w-24 md:h-32 md:w-32 lg:h-40 lg:w-40' %>
+          </div>
+        <div class="business-right w-full md:w-1/2 lg:w-3/4 ml-0 md:ml-2 p-2">
+          <p class="business-comment font-serif text-xs md:text-sm lg:text-xl">
             「待ち合わせより15分早く着いてしまったな」
           </p>
-          <p class="business-comment-2 font-serif text-xs mt-2">
+          <p class="business-comment-2 font-serif text-xs md:text-sm lg:text-xl mt-2">
             「座って時間を潰したいけど、15分のためにカフェに入ってコーヒー代を払うのもなぁ・・・」
           </p>
         </div>
       </div>
-      <div class="takeout-container bg-green-100 flex justify-center p-5 mt-5">
-        <div class="takeout-left">
-          <p class="takeout-comment font-serif text-xs mt-2 w-3/5">
+      <div class="takeout-container bg-green-100 flex flex-col md:flex-row justify-center items-center p-5">
+        <div class="takeout-right flex flex-col items-center justify-center w-full md:w-1/2 lg:w-1/4 p-2">
+          <div class="title font-serif bg-purple-200 text-sm md:text-base lg:text-lg">出先の食事で</div>
+          <%= image_pack_tag 'media/images/woman.jpg', alt: 'Woman', class: 'h-24 w-24 md:h-32 md:w-32 lg:h-40 lg:w-40' %>
+        </div>
+        <div class="takeout-left w-full md:w-1/2 lg:w-3/4 md:order-first p-2">
+          <p class="takeout-comment font-serif text-xs md:text-sm lg:text-xl pl-10">
             「ランチのテイクアウトを買ったけど、どこかで座って食べれるスペースはないかなぁ・・・」
           </p>
-        </div>
-        <div class="takeout-right flex flex-col items-center justify-center w-2/5">
-          <div class="title font-serif bg-purple-200 text-xs">出先の食事で</div>
-          <%= image_pack_tag 'media/images/woman.jpg', alt: 'Woman', style: 'height: 100px; width: 100px;' %>
         </div>
       </div>
     </section>
     <section class="contents-2 max-w-5xl mx-auto items-center">
       <div class="footer-menu-frame flex flex-col items-center">
-        <div class="comments-container font-serif w-full p-5 mt-5">
+        <div class="comments-container font-serif text-base md:text-lg lg:text-xl p-5 mt-10 mb-10">
           <p class="comments">
             そんな皆様の悩みをCHOTTO SPOTが解決します！
           </p>
