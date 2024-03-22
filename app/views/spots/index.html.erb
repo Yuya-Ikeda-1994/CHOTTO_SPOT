@@ -1,7 +1,7 @@
 <% content_for :title, "スポット一覧" %>
 <div class="pt-5 pb-12 mb-10">  
   <!-- 検索フォーム --!>
-  <%= search_form_for @q, class: "search-form", url: spots_path, method: :get do |f| %>
+  <%= search_form_for @q, class: "search-form md:mt-5 lg:mt-10", url: spots_path, method: :get do |f| %>
     <div class="container pt-12 pb-2">
       <div class="row">
         <div class="col-lg-10 offset-lg-1">
@@ -15,17 +15,22 @@
   <% end %>
 
   <!-- マップ検索ボタン --!>
-  <button type="button" class="inline-block text-white bg-purple-500 hover:bg-purple-700 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 ml-5" id="searchMapButton">
+  <button type="button" class="inline-flex items-center justify-center text-white bg-purple-500 hover:bg-purple-700 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 ml-5" id="searchMapButton">
+    <svg class="h-5 w-5 text-white-500 mr-1"  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <circle cx="12" cy="11" r="3" />  <path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 0 1 -2.827 0l-4.244-4.243a8 8 0 1 1 11.314 0z" /></svg>
     <%= t('posts.index.search_map') %>
   </button>
 
   <!-- リスト表示ボタン --!>
-  <button type="button" class="inline-block text-white bg-purple-500 hover:bg-purple-700 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 ml-5 hidden" id="listDisplayButton">
+  <button type="button" class="inline-flex items-center justify-center text-white bg-purple-500 hover:bg-purple-700 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 ml-5 hidden" id="listDisplayButton">
+    <svg class="h-5 w-5 text-white-500 mr-1"  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <line x1="9" y1="6" x2="20" y2="6" />  <line x1="9" y1="12" x2="20" y2="12" />  <line x1="9" y1="18" x2="20" y2="18" />  <line x1="5" y1="6" x2="5" y2="6.01" />  <line x1="5" y1="12" x2="5" y2="12.01" />  <line x1="5" y1="18" x2="5" y2="18.01" /></svg>
     <%= t('posts.index.list_display') %> 
   </button>
 
   <!-- タグ検索ボタン --!>
-  <button id="toggleSearchFormButton" class="inline-block text-white bg-purple-500 hover:bg-purple-700 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 ml-5"><%= t('posts.index.narrow_down_conditions') %></button>
+  <button id="toggleSearchFormButton" class="inline-flex items-center justify-center text-white bg-purple-500 hover:bg-purple-700 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 ml-5">
+    <svg class="h-5 w-5 text-white-500 mr-1"  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <circle cx="10" cy="10" r="7" />  <line x1="21" y1="21" x2="15" y2="15" /></svg>
+    <%= t('posts.index.narrow_down_conditions') %>
+  </button>
   
   <!-- タグ検索 --!>
   <div id="searchForm" class="w-full lg:w-8/12 px-4 mx-auto mt-6 hidden">
@@ -50,7 +55,7 @@
 
 
   <!-- Google Map -->
-  <div id="googleMap" class="text-center m-5 hidden">
+  <div id="googleMap" class="text-center m-5 hidden lg:mb-20">
     <div id="map" class="w-full h-96 sm:h-[600px]" data-spots='<%= @spots.to_json(only: [:id, :latitude, :longitude, :address, :spot_name]) %>'></div>
   </div>
 
@@ -66,7 +71,7 @@
         <% end %>
       </div>
     </div>
-    <%= paginate @spots %>
+    <div class="mt-5 mb-20 md:mb-20"><%= paginate @spots %></div>
   </div>
 </div>
 
